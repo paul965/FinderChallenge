@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Contenido">
+ 	<meta name="keywords" content="Palabras clave">
+  	<meta name="author" content="Christian Huanca Chambi">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta property="og:url"                content="http://www.example.com" />
+	<meta property="og:type"               content="article" />
+	<meta property="og:title"              content="When Great Minds Don’t Think Alike" />
+	<meta property="og:description"        content="How much does culture influence creative thinking?" />
+	<meta property="og:image"              content="url-image" />
+
+	<title>Proyecto Grupo El Comercio</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/global.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css" >
+	<link rel="stylesheet" href="css/font-awesome.min.css" >
+	<style type="text/css">
+		a{
+			text-decoration:underline;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="content container">
+		<div class="row">
+			<div class="col-12">
+				
+				<nav class="d-inline-block my-4">
+				  <h1 class="d-inline-block mr-4" style="float: left;">Finder Challenge</h1>
+				  <div style="float: left;display: table">
+				  	<div style="display: table-cell;vertical-align: bottom;">
+				  		<form class="form-inline ml-5"  style="float: left;">
+						    <input class="form-control mr-sm-2" type="search" name="buscar" id="name"  class="awesomplete">
+						    
+						 	
+						   </ul>
+						   <script type="text/javascript" src="js/awesomplete.min.js"></script>
+						   
+						    <script>
+						    	var elemento = document.getElementById('name');
+						    	new Awesomplete(elemento,{
+						    		list:["El principito","El libro de la selva","Harry Potter","Narnia","Zombie and horses","Templation hiding from me"]
+
+
+						    	})
+
+
+
+						    </script>
+						    <input class="btn  my-sm-0" type="button" onclick="#buscar" value="Buscar">
+
+						</form>
+						<a class="ml-3" id="bt_add" href="" style="float: left;">Guardar búsqueda</a>
+				  	</div>
+				  </div>
+				  
+				</nav>
+			</div>
+
+
+
+<script>
+	$(document).ready(function(){
+		$('#bt_add').click(function(){
+			agregar();
+		});
+		$('#bt_del').click(function(){
+			eliminar(id_fila_selected);
+		});
+		
+	});
+	var cont=0;
+	var id_fila_selected=[];
+	function agregar(){
+		cont++;
+		var fila='<tr class="selected" id="fila'+cont+'" onclick="seleccionar(this.id);"><td>'+cont+'</td><td>texto x defecto</td><td>0.00</td></tr>';
+		$('#tabla').append(fila);
+		reordenar();
+	}
+
+	function seleccionar(id_fila){
+		if($('#'+id_fila).hasClass('seleccionada')){
+			$('#'+id_fila).removeClass('seleccionada');
+		}
+		else{
+			$('#'+id_fila).addClass('seleccionada');
+		}
+		//2702id_fila_selected=id_fila;
+		id_fila_selected.push(id_fila);
+	}
+
+	function eliminar(id_fila){
+		/*$('#'+id_fila).remove();
+		reordenar();*/
+		for(var i=0; i<id_fila.length; i++){
+			$('#'+id_fila[i]).remove();
+		}
+		reordenar();
+	}
+
+	function reordenar(){
+		var num=1;
+		$('#tabla tbody tr').each(function(){
+			$(this).find('td').eq(0).text(num);
+			num++;
+		});
+	}
+	
+
+	}
+
+
+</script>
+
+
+
+	           
+				<div class="col-3">
+				<h4>Búsquedas guardadas</h4>
+				<ul style="list-style:none;">
+					<li><a href="">Harry Potter</a></li>
+					<li><a class="small" id="#bt_del" href="">Editar</a>|<a class="small" href="">Eliminar</a></li>
+					<li class="mb-3"><a href="">search drama</a></li>
+					<li><a href="">comedias en ingles</a></li>
+				</ul>
+
+
+				<h4>Categorías</h4>
+				<ul style="list-style:none;">
+					<li><a href="" actived>Todos</a></li>
+					<li><a href="">Terror</a></li>
+					<li><a href="">Comedia</a></li>
+					<li><a href="">Drama</a></li>
+				</ul>
+
+
+				<h4>Idioma</h4>
+				<ul style="list-style:none;">
+					<li><a href="" actived>Todos</a></li>
+					<li><a href="">Inglés</a></li>
+					<li><a href="">Español</a></li>
+					<li><a href="">Portugués</a></li>
+				</ul>
+
+
+				<h4>Publicación</h4>
+				<ul style="list-style:none;">
+					<li><a href="" actived>Todos</a></li>
+					<li><a href="">Hoy</a></li>
+					<li><a href="">Hace una semana</a></li>
+					<li><a href="">Hace un mes</a></li>
+					<li><a href="">Hace un año</a></li>
+				</ul>
+
+
+				<h4>Presentación</h4>
+				<ul style="list-style:none;">
+					<li><a href="">Impreso</a></li>
+					<li><a href="">Digital</a></li>
+					<li><a href="" actived>Impreso y digital</a></li>
+				</ul>
+
+			</div>
+			<div class="col-9">
+				<div class="row">
+					<div class="col-4">
+						<div class="mb-3"><img src="img/fondo.jpg" height="200"></div>
+						<h3>El principito</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.</p>
+					</div>
+					<div class="col-4">
+						<div class="mb-3"><img src="img/fondo.jpg" height="200"></div>
+						<h3>El libro de la selva</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.</p>
+					</div>
+					<div class="col-4">
+						<div class="mb-3"><img src="img/fondo.jpg" height="200"></div>
+						<h3>Harry Potter</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.</p>
+					</div>
+					<div class="col-4">
+						<div class="mb-3"><img src="img/fondo.jpg" height="200"></div>
+						<h3>Narnia</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.</p>
+					</div>
+					<div class="col-4">
+						<div class="mb-3"><img src="img/fondo.jpg" height="200"></div>
+						<h3>Zombie and horses</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.</p>
+					</div>
+					<div class="col-4">
+						<div class="mb-3"><img src="img/fondo.jpg" height="200"></div>
+						<h3>Templation hiding from me</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.</p>
+					</div>
+					<div class="col-12 text-right">
+						<p><span><a href="">anterior</a></span>|<span><a href="">siguiente</a></span></p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+</body>
+</html>
